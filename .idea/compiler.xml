@@ -9,8 +9,5 @@
         <module name="demofx1" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="demofx1" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

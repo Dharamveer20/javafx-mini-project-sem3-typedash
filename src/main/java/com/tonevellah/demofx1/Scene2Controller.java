@@ -1,31 +1,23 @@
 //login
-package com.tonevellah.demofx1;
+package com.typedash.demofx1;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
-import java.util.Scanner;
 
-import static com.tonevellah.demofx1.Scene1Controller.clr;
-import static com.tonevellah.demofx1.Scene1Controller.log;
+import static com.typedash.demofx1.Scene1Controller.clr;
+import static com.typedash.demofx1.Scene1Controller.log;
 
 public class Scene2Controller {
     private Stage stage;
@@ -65,7 +57,7 @@ public class Scene2Controller {
         ResultSet resultSet = null;
         PreparedStatement psInsert = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "Rubaiyat26");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?@20");
             preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
@@ -104,6 +96,7 @@ public class Scene2Controller {
                 }
             }
         } catch (SQLException se) {
+            System.out.println("Error while signing up");
             se.printStackTrace();
         } finally {
             if (resultSet != null) {

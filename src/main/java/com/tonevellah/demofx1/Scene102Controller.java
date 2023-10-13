@@ -1,6 +1,5 @@
-package com.tonevellah.demofx1;
+package com.typedash.demofx1;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -22,9 +21,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-import static com.tonevellah.demofx1.Scene1Controller.clr;
-import static com.tonevellah.demofx1.Scene1Controller.log;
-import static com.tonevellah.demofx1.Scene5Controller.virkey;
+import static com.typedash.demofx1.Scene1Controller.clr;
+import static com.typedash.demofx1.Scene5Controller.virkey;
 
 public class Scene102Controller implements Initializable {
     @FXML
@@ -71,7 +69,7 @@ public class Scene102Controller implements Initializable {
 
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "Rubaiyat26");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?@20");
             preparedStatement = connection.prepareStatement("SELECT * FROM extra WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();

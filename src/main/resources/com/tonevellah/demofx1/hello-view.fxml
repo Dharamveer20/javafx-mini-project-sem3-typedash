@@ -14,9 +14,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tonevellah.demofx1.Scene1Controller">
     <children>
-        <VBox layoutX="-8.0" layoutY="1.0" prefHeight="650.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox layoutX="-8.0" layoutY="13.0" prefHeight="650.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" AnchorPane.bottomAnchor="-13.0" AnchorPane.topAnchor="13.0">
             <children>
-                <Pane prefHeight="132.0" prefWidth="289.0" />
+                <Pane prefHeight="157.0" prefWidth="350.0" />
                 <Button mnemonicParsing="false" onAction="#signuppage" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="Sign Up" textAlignment="CENTER" textFill="#ebe6e6">
                     <font>
                         <Font size="24.0" />
@@ -41,19 +41,8 @@
                     </effect>
                 </Button>
                 <Pane prefHeight="4.0" prefWidth="283.0" />
-                <Button mnemonicParsing="false" onAction="#wpmrush" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="WPMRush" textFill="#ebe6e6">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                    <effect>
-                        <ColorAdjust brightness="0.3" />
-                    </effect>
-                </Button>
                 <Pane prefHeight="4.0" prefWidth="283.0" />
-                <Button mnemonicParsing="false" onAction="#exit" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="Exit" textAlignment="CENTER" textFill="#ebe6e6">
+                <Button mnemonicParsing="false" onAction="#exit" pickOnBounds="false" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="Exit" textAlignment="CENTER" textFill="#ebe6e6">
                     <font>
                         <Font size="24.0" />
                     </font>

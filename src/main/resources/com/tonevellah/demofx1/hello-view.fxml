@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tonevellah.demofx1.Scene1Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tonevellah.demofx1.Scene1Controller">
     <children>
         <VBox layoutX="-8.0" layoutY="1.0" prefHeight="650.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -84,16 +84,6 @@
                 <Font size="24.0" />
             </font>
         </Text>
-        <ImageView fitHeight="30.0" fitWidth="110.0" layoutX="1007.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@white%20switch.jpg" />
-            </image>
-        </ImageView>
-        <Button layoutX="1013.0" layoutY="591.0" mnemonicParsing="false" onAction="#changetheme" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: transparent;" textFill="#3f3131">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-        </Button>
     </children>
     <effect>
         <Blend />

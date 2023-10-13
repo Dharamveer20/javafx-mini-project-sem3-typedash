@@ -65,15 +65,15 @@ public class Scene1Controller {
         //System.out.println("Exit");
         System.exit(0);
     }
-    public void wpmrush(ActionEvent e) throws IOException{
-
-//        if(clr==0)
-            root = FXMLLoader.load(getClass().getResource("Scene5.fxml"));
-//        else root = FXMLLoader.load(getClass().getResource("Scene15.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-    }
+//    public void wpmrush(ActionEvent e) throws IOException{
+//
+////        if(clr==0)
+//            root = FXMLLoader.load(getClass().getResource("Scene5.fxml"));
+////        else root = FXMLLoader.load(getClass().getResource("Scene15.fxml"));
+//        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//
+//    }
 }

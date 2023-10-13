@@ -1,4 +1,4 @@
-//menu
+//after signing or logging in
 package com.tonevellah.demofx1;
 
 import javafx.event.ActionEvent;
@@ -60,17 +60,17 @@ public class Scene4Controller
         stage.setScene(scene);
         stage.show();
     }
-    public void custom(ActionEvent e)throws IOException {
-
-        lvl=5;
-       // System.out.println("Custom");
-        if(clr==0)root = FXMLLoader.load(getClass().getResource("Scene7.fxml"));
-        else root = FXMLLoader.load(getClass().getResource("Scene17.fxml"));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+//    public void custom(ActionEvent e)throws IOException {
+//
+//        lvl=5;
+//       // System.out.println("Custom");
+//        if(clr==0)root = FXMLLoader.load(getClass().getResource("Scene7.fxml"));
+//        else root = FXMLLoader.load(getClass().getResource("Scene17.fxml"));
+//        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+//    }
     public void programing(ActionEvent e)throws IOException {
 
         lvl=4;

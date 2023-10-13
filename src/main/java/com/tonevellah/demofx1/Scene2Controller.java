@@ -1,4 +1,4 @@
-//login
+//login logic
 package com.tonevellah.demofx1;
 
 import javafx.event.ActionEvent;
@@ -45,6 +45,7 @@ public class Scene2Controller {
     public String password;
 
     public void menu(ActionEvent event) throws IOException {
+
         username=uname.getText();
         password=pass.getText();
 
@@ -56,10 +57,10 @@ public class Scene2Controller {
             fileWriter.write(username);
             fileWriter.close();
         }
-        catch(IOException exc){
-            exc.printStackTrace();
+        catch(IOException e){
+            System.out.println("Error in Scene2Controller line 60");
+            e.printStackTrace();
         }
-
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -84,14 +85,18 @@ public class Scene2Controller {
                     String retrievedPassword = resultSet.getString("password");
                     if(retrievedPassword.equals(password)){
 
-
-                        log=1;
-                        if (clr == 0) root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
-                        else root = FXMLLoader.load(getClass().getResource("Scene14.fxml"));
-                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
+                        try {
+                            log = 1;
+                            if (clr == 0) root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
+                            else root = FXMLLoader.load(getClass().getResource("Scene14.fxml"));
+                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.show();
+                        } catch (Exception e){
+                            System.out.println("Error in Line 97 scene2Controller.");
+                            System.out.println(e);
+                        }
                     }
                     else{
                         warnin.setText("Password did not match!");
@@ -138,8 +143,9 @@ public class Scene2Controller {
         stage.show();*/
     }
     public void goback(ActionEvent event) throws IOException {
-        if(clr==0)root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        else root = FXMLLoader.load(getClass().getResource("hello-viewb.fxml"));
+//        if(clr==0)
+            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+//        else root = FXMLLoader.load(getClass().getResource("hello-viewb.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

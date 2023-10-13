@@ -108,7 +108,8 @@ public class Scene9Controller {
 
         System.out.println("random" + ran);
         try {
-            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/Lines.txt");
+//            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/Lines.txt");
+            File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\Lines.txt");
             Scanner fileinput = new Scanner(file);
             while (fileinput.hasNext()) {
                 String s = fileinput.nextLine();
@@ -166,13 +167,16 @@ public class Scene9Controller {
 
         System.out.println("car "+ car);
         if(car==1){
-            imgview.setImage(new Image("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_yellow.png"));
+//            imgview.setImage(new Image("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_yellow.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_yellow.png"));
         }
         else if(car==2){
-            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_red.png"));
+//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_red.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_red.png"));
         }
         else if(car==3){
-            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_pink.png"));
+//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_pink.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_pink.png"));
         }
         won.setVisible(false);
 

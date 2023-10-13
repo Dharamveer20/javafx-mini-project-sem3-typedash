@@ -51,7 +51,8 @@ public class Scene2Controller {
         System.out.println(username +" "+ password);
 
         try {
-            FileWriter fileWriter = new FileWriter("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
+//            FileWriter fileWriter = new FileWriter("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
+            FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
             fileWriter.write(username);
             fileWriter.close();
         }
@@ -65,7 +66,7 @@ public class Scene2Controller {
         ResultSet resultSet = null;
         PreparedStatement psInsert = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "Rubaiyat26");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
             preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();

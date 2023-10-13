@@ -1,5 +1,5 @@
 //view result
-package com.typedash.demofx1;
+package com.tonevellah.demofx1;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +12,10 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -24,9 +26,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
-import static com.typedash.demofx1.Scene1Controller.clr;
-import static com.typedash.demofx1.Scene5Controller.virkey;
+import static com.tonevellah.demofx1.Scene1Controller.clr;
+import static com.tonevellah.demofx1.Scene1Controller.log;
+import static com.tonevellah.demofx1.Scene5Controller.virkey;
 
 public class Scene6Controller implements Initializable {
     @FXML
@@ -64,7 +68,7 @@ public class Scene6Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         String username = "t";
         try {
-            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
+            File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
             Scanner fileinput = new Scanner(file);
 
             while (fileinput.hasNext()) {
@@ -83,7 +87,7 @@ public class Scene6Controller implements Initializable {
         ArrayList<Integer> wpmscore = new ArrayList<Integer>();
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?@20");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
             preparedStatement = connection.prepareStatement("SELECT * FROM races WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();

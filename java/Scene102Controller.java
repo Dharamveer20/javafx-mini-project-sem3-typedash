@@ -50,7 +50,8 @@ public class Scene102Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         String username = "t";
         try {
-            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
+//            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
+            FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
             Scanner fileinput = new Scanner(file);
 
             while (fileinput.hasNext()) {
@@ -71,7 +72,7 @@ public class Scene102Controller implements Initializable {
 
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "Rubaiyat26");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
             preparedStatement = connection.prepareStatement("SELECT * FROM extra WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();

@@ -1,6 +1,7 @@
-//registered wpm
-package com.typedash.demofx1;
+//registered wpm // no error
+package com.tonevellah.demofx1;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -26,6 +27,10 @@ import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.tonevellah.demofx1.Scene1Controller.*;
+import static com.tonevellah.demofx1.Scene1Controller.car;
 
 public class Gamecontroller {
     private int wordCounter = 0;
@@ -96,7 +101,7 @@ public class Gamecontroller {
 
     public String takeGivenLine(){
         int max=50,min=40;
-        max= Scene1Controller.lvl;
+        max=lvl;
         //System.out.println("level" + lvl);
         min = max - 1;
         max *= 15;
@@ -107,7 +112,8 @@ public class Gamecontroller {
 
         //System.out.println("random" + ran);
         try {
-            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/Lines.txt");
+//            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/Lines.txt");
+            File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\Lines.txt");
             Scanner fileinput = new Scanner(file);
             while (fileinput.hasNext()) {
                 String s = fileinput.nextLine();
@@ -119,6 +125,7 @@ public class Gamecontroller {
             fileinput.close();
         }
         catch (Exception e) {
+            System.out.println("Error in GameController while Writing into the the");
             System.out.println(e);
         }
         return st;
@@ -149,7 +156,7 @@ public class Gamecontroller {
             st+=givenwords[ii] + " ";
         }
         greenText = new Text(st);
-        if(Scene1Controller.clr==0)greenText.setFill(Color.BLACK);
+        if(clr==0)greenText.setFill(Color.BLACK);
         else greenText.setFill(Color.WHITE);
 
         textflow.getChildren().addAll(greyText,blueText, greenText);
@@ -164,15 +171,18 @@ public class Gamecontroller {
         wrong.setVisible(false);
         correct.setVisible(false);
 
-        System.out.println("car "+ Scene1Controller.car);
-        if(Scene1Controller.car==1){
-            imgview.setImage(new Image("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_yellow.png"));
+        System.out.println("car "+ car);
+        if(car==1){
+//            imgview.setImage(new Image("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_yellow.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_yellow.png"));
         }
-        else if(Scene1Controller.car==2){
-            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_red.png"));
+        else if(car==2){
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_red.png"));
+//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_red.png"));
         }
-        else if(Scene1Controller.car==3){
-            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_pink.png"));
+        else if(car==3){
+//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_pink.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_pink.png"));
         }
         won.setVisible(false);
 
@@ -182,7 +192,8 @@ public class Gamecontroller {
 
         String username="t";
         try {
-            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
+            File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
+//            FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
             Scanner fileinput = new Scanner(file);
 
             while (fileinput.hasNext()) {
@@ -192,6 +203,7 @@ public class Gamecontroller {
             fileinput.close();
         }
         catch(Exception fe){
+            System.out.println("");
             System.out.println(fe);
         }
 
@@ -201,7 +213,7 @@ public class Gamecontroller {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?@20");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?@0");
 
             psInsert = connection.prepareStatement("INSERT INTO races(username,wpm) VALUES(?,?)");
             psInsert.setString(1, username);
@@ -245,7 +257,7 @@ public class Gamecontroller {
 
         //extra
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?@20");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
 
             psInsert = connection.prepareStatement("INSERT INTO extra(username,wpm,accuracy,totword,totchar,pretime) VALUES(?,?,?,?,?,?)");
             psInsert.setString(1, username);
@@ -293,7 +305,7 @@ public class Gamecontroller {
 
 
         //System.out.println("ttt");
-        if(Scene1Controller.clr==0) {
+        if(clr==0) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene6.fxml"));
             root = loader.load();
             //root = FXMLLoader.load(getClass().getResource("game.fxml"));
@@ -397,10 +409,10 @@ public class Gamecontroller {
                 wrong.setVisible(false);
                 correct.setVisible(true);
 
-                if(Scene1Controller.lvl==1)speed=(int)wpm/5;
-                else if(Scene1Controller.lvl==2)speed=(int)wpm/5 +3;
-                else if(Scene1Controller.lvl==3)speed=(int)wpm/5 +6;
-                else if(Scene1Controller.lvl==4)speed=(int)wpm/5 +9;
+                if(lvl==1)speed=(int)wpm/5;
+                else if(lvl==2)speed=(int)wpm/5 +3;
+                else if(lvl==3)speed=(int)wpm/5 +6;
+                else if(lvl==4)speed=(int)wpm/5 +9;
                 /*if(lvl==1)speed=10;
                 else if(lvl==2)speed=12;
                 else if(lvl==3)speed=14;
@@ -462,7 +474,7 @@ public class Gamecontroller {
                 st+=givenwords[ii] + " ";
             }
             greenText = new Text(st);
-            if(Scene1Controller.clr==0)greenText.setFill(Color.BLACK);
+            if(clr==0)greenText.setFill(Color.BLACK);
             else greenText.setFill(Color.WHITE);
 
             textflow.getChildren().addAll(greyText,lastText,blueText,greenText);

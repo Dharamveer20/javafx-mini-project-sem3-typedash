@@ -1,6 +1,8 @@
 //virtual keyboard
-package com.typedash.demofx1;
+package com.tonevellah.demofx1;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -10,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -19,12 +22,18 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
+import java.util.Date;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.tonevellah.demofx1.Scene1Controller.*;
+import static com.tonevellah.demofx1.Scene1Controller.car;
 
 public class Scene101Controller {
     private int wordCounter = 0;
@@ -100,8 +109,8 @@ public class Scene101Controller {
 
     public String takeGivenLine(){
         int max=50,min=40;
-        max= Scene1Controller.lvl;
-        System.out.println("level" + Scene1Controller.lvl);
+        max=lvl;
+        System.out.println("level" + lvl);
         min = max - 1;
         max *= 15;
         min *= 15;
@@ -111,7 +120,8 @@ public class Scene101Controller {
 
         System.out.println("random" + ran);
         try {
-            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/Lines.txt");
+//            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/Lines.txt");
+            File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\Lines.txt");
             Scanner fileinput = new Scanner(file);
             while (fileinput.hasNext()) {
                 String s = fileinput.nextLine();
@@ -153,7 +163,7 @@ public class Scene101Controller {
             st+=givenwords[ii] + " ";
         }
         greenText = new Text(st);
-        if(Scene1Controller.clr==0)greenText.setFill(Color.BLACK);
+        if(clr==0)greenText.setFill(Color.BLACK);
         else greenText.setFill(Color.WHITE);
 
         textflow.getChildren().addAll(greyText,blueText, greenText);
@@ -169,15 +179,18 @@ public class Scene101Controller {
         wrong.setVisible(false);
         correct.setVisible(false);
 
-        System.out.println("car "+ Scene1Controller.car);
-        if(Scene1Controller.car==1){
-            imgview.setImage(new Image("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_yellow.png"));
+        System.out.println("car "+ car);
+        if(car==1){
+//            imgview.setImage(new Image("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_yellow.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_yellow.png"));
         }
-        else if(Scene1Controller.car==2){
-            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_red.png"));
+        else if(car==2){
+//                       imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_red.png"));
+//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_red.png"));
         }
-        else if(Scene1Controller.car==3){
-            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_pink.png"));
+        else if(car==3){
+//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_pink.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_pink.png"));
         }
         won.setVisible(false);
 
@@ -206,7 +219,7 @@ public class Scene101Controller {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?@20");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
 
             psInsert = connection.prepareStatement("INSERT INTO races(username,wpm) VALUES(?,?)");
             psInsert.setString(1, username);
@@ -250,7 +263,7 @@ public class Scene101Controller {
 
         //extra
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?@20");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
 
             psInsert = connection.prepareStatement("INSERT INTO extra(username,wpm,accuracy,totword,totchar,pretime) VALUES(?,?,?,?,?,?)");
             psInsert.setString(1, username);
@@ -297,7 +310,7 @@ public class Scene101Controller {
         }
 
         //System.out.println("ttt");
-        if(Scene1Controller.clr==0) {
+        if(clr==0) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene6.fxml"));
             root = loader.load();
             //root = FXMLLoader.load(getClass().getResource("game.fxml"));
@@ -1366,7 +1379,7 @@ public class Scene101Controller {
             st+=givenwords[ii] + " ";
         }
         greenText = new Text(st);
-        if(Scene1Controller.clr==0)greenText.setFill(Color.BLACK);
+        if(clr==0)greenText.setFill(Color.BLACK);
         else greenText.setFill(Color.WHITE);
 
         textflow.getChildren().addAll(greyText,lastText,blueText,greenText);

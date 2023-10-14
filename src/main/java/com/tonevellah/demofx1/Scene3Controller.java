@@ -1,4 +1,4 @@
-//signup
+//signup GUI controller
 package com.tonevellah.demofx1;
 
 import javafx.event.ActionEvent;
@@ -19,7 +19,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.sql.*;
 import java.io.*;
-import java.sql.*;
 
 import static com.tonevellah.demofx1.Scene1Controller.clr;
 import static com.tonevellah.demofx1.Scene1Controller.log;
@@ -45,9 +44,8 @@ public class Scene3Controller {
         password=pass.getText();
         System.out.println(username +" "+ password);
 
-//        try {
-//            FileWriter fileWriter = new FileWriter("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
             try {
+//            FileWriter fileWriter = new FileWriter("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
                 FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
 //                FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\com\\tonevellah\\demofx1\\usname.txt");
 
@@ -57,13 +55,6 @@ public class Scene3Controller {
                 System.out.println("Filewriter not working while Signing up in Scene3Controller line 55");
                 System.out.println(e);
             }
-            //            C:\Users\Ganesh\OneDrive\Documents\Dharam\miniproject\resources\com
-
-//        }
-//        catch(IOException exc){
-//            exc.printStackTrace();
-//            System.out.println("Error in filewriter scene3 controllor");
-//        }
 
         Connection connection = null;
         PreparedStatement psInsert = null;
@@ -81,9 +72,7 @@ public class Scene3Controller {
                 warnin.setText("Name already taken!");
                 warnin.setVisible(true);
                 System.out.println("user exists");
-                /*Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("This name is already taken!");
-                alert.show();*/
+
                 uname.setText("");
                 pass.setText("");
             } else {
@@ -95,18 +84,15 @@ public class Scene3Controller {
                 Statement stm = connection.createStatement();
                // stm.executeUpdate("Create table "+username+);
                 log=1;
-                if (clr == 0) root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
-                else root = FXMLLoader.load(getClass().getResource("Scene14.fxml"));
+                root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-
-
             }
         } catch (SQLException se) {
             se.printStackTrace();
-        } finally {
+        } finally { // Closing All Resources (Connections and all)
             if (resultSet != null) {
                 try {
                     resultSet.close();
@@ -136,17 +122,9 @@ public class Scene3Controller {
                 }
             }
         }
-        /*if (clr == 0) root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
-        else root = FXMLLoader.load(getClass().getResource("Scene14.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();*/
-
     }
     public void goback(ActionEvent event) throws IOException {
-        if(clr==0)root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        else root = FXMLLoader.load(getClass().getResource("hello-viewb.fxml"));
+        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

@@ -15,64 +15,30 @@ public class Scene1Controller {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    static public int clr=0;
-    static public int lvl=1;
-    static public int car=1;
-    static public int log=0;
+    static public int clr=0; // clr = 0 bright mode, clr = 1 night mode
+    static public int lvl=1; // level 1,2,3
+    static public int car=1; // car 1,2,3
+    static public int log=0; // log = 0 not logged in log in 1 logged in
 
-//    public void changetheme(ActionEvent event) throws IOException {
-//        if(clr==0){
-//            clr=1;
-//            root = FXMLLoader.load(getClass().getResource("hello-viewb.fxml"));
-//            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//            scene = new Scene(root);
-//            stage.setScene(scene);
-//            stage.show();
-//        }
-//        else{
-//            clr=0;
-//            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-//            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//            scene = new Scene(root);
-//            stage.setScene(scene);
-//            stage.show();
-//        }
-//    }
-
+    // Opening the login GUI
     public void loginpage(ActionEvent event) throws IOException {
         System.out.println(clr);
-//        if(clr==0)
-            root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
-//        else root = FXMLLoader.load(getClass().getResource("Scene12.fxml"));
+        root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    public void signuppage(ActionEvent event) throws IOException {
 
-        //System.out.println("signup");
-//        if(clr==0)
-            root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
-//        else root = FXMLLoader.load(getClass().getResource("Scene13.fxml"));
+    // Opening the Signup GUI
+    public void signuppage(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
     public void exit(ActionEvent e) {
-
-        //System.out.println("Exit");
         System.exit(0);
     }
-//    public void wpmrush(ActionEvent e) throws IOException{
-//
-//        if(clr==0)root = FXMLLoader.load(getClass().getResource("Scene5.fxml"));
-//        else root = FXMLLoader.load(getClass().getResource("Scene15.fxml"));
-//        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-//
-//    }
 }

@@ -98,7 +98,7 @@ public class Scene5Controller implements Initializable {
     public void gotogame(ActionEvent e) throws IOException{
 
         if(log==1) {
-            if (clr == 0) {
+//            if (clr == 0) {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("game.fxml"));
                     root = loader.load();
                     stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -108,7 +108,7 @@ public class Scene5Controller implements Initializable {
                     scene = new Scene(root);
                     stage.setScene(scene);
                     stage.show();
-                }
+//                }
 //                else{
 //                    FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene101.fxml"));
 //                    root = loader.load();

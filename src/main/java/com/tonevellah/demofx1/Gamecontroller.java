@@ -132,9 +132,9 @@ public class Gamecontroller {
         //}
     }
 
-    public void customtext(String ctext) {
-        givenstring=ctext;
-    }
+//    public void customtext(String ctext) {
+//        givenstring=ctext;
+//    }
 
     String[] givenwords = givenstring.split(" ");
     //String[] givenwords = givenstring.split("\\W");
@@ -156,8 +156,9 @@ public class Gamecontroller {
             st+=givenwords[ii] + " ";
         }
         greenText = new Text(st);
-        if(clr==0)greenText.setFill(Color.BLACK);
-        else greenText.setFill(Color.WHITE);
+//        if(clr==0)
+            greenText.setFill(Color.BLACK);
+//        else greenText.setFill(Color.WHITE);
 
         textflow.getChildren().addAll(greyText,blueText, greenText);
         textflow.setStyle("-fx-font: 28 arial;");
@@ -339,6 +340,7 @@ public class Gamecontroller {
     private int speed = 0;
     private int countChar=0;
 
+    // Car movement logic here
     Runnable r = new Runnable() {
         @Override
         public void run() {

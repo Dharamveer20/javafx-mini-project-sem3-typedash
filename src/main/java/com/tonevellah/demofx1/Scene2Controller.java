@@ -71,13 +71,11 @@ public class Scene2Controller {
             preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
+
             if (!resultSet.isBeforeFirst()) {
                 warnin.setText("Username not found!");
                 warnin.setVisible(true);
                 System.out.println("User not found");
-                /*Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Usern not found!");
-                alert.show();*/
                 uname.setText("");
                 pass.setText("");
             } else {
@@ -87,8 +85,7 @@ public class Scene2Controller {
 
                         try {
                             log = 1;
-                            if (clr == 0) root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
-                            else root = FXMLLoader.load(getClass().getResource("Scene14.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
                             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             scene = new Scene(root);
                             stage.setScene(scene);
@@ -102,9 +99,6 @@ public class Scene2Controller {
                         warnin.setText("Password did not match!");
                         warnin.setVisible(true);
                         System.out.println("password did not match");
-                        /*Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Password did not match!");
-                        alert.show();*/
                         pass.setText("");
                     }
                 }
@@ -112,7 +106,7 @@ public class Scene2Controller {
         } catch (SQLException se) {
             System.out.println("Error while logging in");
             se.printStackTrace();
-        } finally {
+        } finally { // Closing Connections and all resources
             if (resultSet != null) {
                 try {
                     resultSet.close();
@@ -135,17 +129,9 @@ public class Scene2Controller {
                 }
             }
         }
-        /*if (clr == 0) root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
-        else root = FXMLLoader.load(getClass().getResource("Scene14.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();*/
     }
     public void goback(ActionEvent event) throws IOException {
-//        if(clr==0)
-            root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-//        else root = FXMLLoader.load(getClass().getResource("hello-viewb.fxml"));
+        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

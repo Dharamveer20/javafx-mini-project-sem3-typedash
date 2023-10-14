@@ -1,7 +1,5 @@
-//registered wpm // no error
+// Typing Game Scene Controller
 package com.tonevellah.demofx1;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -27,44 +25,40 @@ import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.tonevellah.demofx1.Scene1Controller.*;
 import static com.tonevellah.demofx1.Scene1Controller.car;
-
 public class Gamecontroller {
     private int wordCounter = 0;
     private int first = 0;
     int fir = 0;
-
     //private File saveData;
-
     ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-
     @FXML
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     @FXML
-    public Text seconds;
+    public Text seconds; // Displaying Seconds
     @FXML
-    private Text wordsPerMin;
+    private Text wordsPerMin; // displaying WPM per word
     @FXML
-    private Text accuracy;
+    private Text accuracy; // Display accuracy
     @FXML
-    private Text programWord;
+    private Text programWord; // current word that is expected by user to type (hidden behind textflow (Text to be shown to type in the GUI))
     @FXML
-    private Text secondProgramWord;
+    private Text secondProgramWord; // hidden behind textflow (Text to be shown to type in the GUI)
     @FXML
-    private Text thirddProgramWord;
+    private Text thirdProgramWord; // hidden behind textflow (Text to be shown to type in the GUI)
     @FXML
-    private Text secpreviousProgramWord;
+    private Text secpreviousProgramWord; // previous word ka bhi previous word (hidden behind textflow (Text to be shown to type in the GUI))
     @FXML
-    private Text previousProgramWord;
-
+    private Text previousProgramWord; // hidden behind textflow (Text to be shown to type in the GUI)
     @FXML
-    private TextField userWord;
+    private TextFlow textflow; // Text to be shown to type in the GUI
+    @FXML
+    private TextField userWord; // Actual word entered by user
 
     @FXML
     private ImageView correct;
@@ -74,8 +68,7 @@ public class Gamecontroller {
     @FXML
     private Button playAgain;
 
-    @FXML
-    private TextFlow textflow;
+
     @FXML
     private Text greyText;
     @FXML
@@ -96,7 +89,7 @@ public class Gamecontroller {
     private long pretime = 0;
     Instant start,end;
 
-
+// Alloting sentence that will be printed in the GUI
     public String givenstring =takeGivenLine();
 
     public String takeGivenLine(){
@@ -136,15 +129,14 @@ public class Gamecontroller {
 //        givenstring=ctext;
 //    }
 
-    String[] givenwords = givenstring.split(" ");
-    //String[] givenwords = givenstring.split("\\W");
+    String[] givenwords = givenstring.split(" "); // Creating array which will store all words from the text that will be displayed to type
 
     public void setfirstword() {
         secpreviousProgramWord.setText("start");
         previousProgramWord.setText("here:- ");
         programWord.setText(givenwords[0]);
         secondProgramWord.setText(givenwords[1]);
-        thirddProgramWord.setText(givenwords[2]);
+        thirdProgramWord.setText(givenwords[2]);
 
         greyText=new Text("");
         greyText.setFill(Color.GREY);
@@ -223,7 +215,8 @@ public class Gamecontroller {
 
 
         } catch (SQLException se) {
-            se.printStackTrace();
+            System.out.println(se);
+//            se.printStackTrace();
         } finally {
             if (resultSet != null) {
                 try {
@@ -304,9 +297,8 @@ public class Gamecontroller {
             }
         }
 
-
         //System.out.println("ttt");
-        if(clr==0) {
+//        if(clr==0) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene6.fxml"));
             root = loader.load();
             //root = FXMLLoader.load(getClass().getResource("game.fxml"));
@@ -317,19 +309,19 @@ public class Gamecontroller {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }
-        else{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene16.fxml"));
-            root = loader.load();
-            //root = FXMLLoader.load(getClass().getResource("game.fxml"));
-            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            Scene6Controller scene6controller = loader.getController();
-            int acc = (int) Math.round((counter * 1.0 / countAll) * 100);
-            scene6controller.displayResult(counter, acc, countAll, countAll - counter);
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
+//        }
+//        else{
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene16.fxml"));
+//            root = loader.load();
+//            //root = FXMLLoader.load(getClass().getResource("game.fxml"));
+//            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+//            Scene6Controller scene6controller = loader.getController();
+//            int acc = (int) Math.round((counter * 1.0 / countAll) * 100);
+//            scene6controller.displayResult(counter, acc, countAll, countAll - counter);
+//            scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
+//        }
 
     }
 

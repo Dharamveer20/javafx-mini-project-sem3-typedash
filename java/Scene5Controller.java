@@ -54,10 +54,10 @@ public class Scene5Controller implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
 
         myChoiceBox.getItems().addAll(cars);
-        myChoiceBox.setOnAction(this::getFood);
+        myChoiceBox.setOnAction(this::getCar);
         myChoiceBox.setStyle("-fx-font: 20 arial;");
     }
-    public void getFood(ActionEvent event) {
+    public void getCar(ActionEvent event) {
 
         String mytime = myChoiceBox.getValue();
         if(mytime=="Yellow") car=1;

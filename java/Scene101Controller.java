@@ -60,7 +60,7 @@
 //    @FXML
 //    private Text secondProgramWord;
 //    @FXML
-//    private Text thirddProgramWord;
+//    private Text thirdProgramWord;
 //    @FXML
 //    private Text secpreviousProgramWord;
 //    @FXML
@@ -151,7 +151,7 @@
 //        previousProgramWord.setText("here:- ");
 //        programWord.setText(givenwords[0]);
 //        secondProgramWord.setText(givenwords[1]);
-//        thirddProgramWord.setText(givenwords[2]);
+//        thirdProgramWord.setText(givenwords[2]);
 //
 //        greyText=new Text("");
 //        greyText.setFill(Color.GREY);

@@ -17,7 +17,7 @@ import java.io.IOException;
 import static com.tonevellah.demofx1.Scene1Controller.clr;
 
 public class Scene7Controller {
-
+    
     @FXML
     private Stage stage;
     private Scene scene;

@@ -27,18 +27,16 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import static com.tonevellah.demofx1.Scene1Controller.*;
-import static com.tonevellah.demofx1.Scene1Controller.car;
+import static com.tonevellah.demofx1.Scene1Controller.car; // Importing car (value = 1 or 2 or 3). Chosen by the user.
 public class Gamecontroller {
     private int wordCounter = 0;
     private int first = 0;
     int fir = 0;
-    //private File saveData;
     ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
     @FXML
     private Stage stage;
     private Scene scene;
     private Parent root;
-
     @FXML
     public Text seconds; // Displaying Seconds
     @FXML
@@ -58,44 +56,35 @@ public class Gamecontroller {
     @FXML
     private TextFlow textflow; // Text to be shown to type in the GUI
     @FXML
-    private TextField userWord; // Actual word entered by user
-
+    private TextField userWord; // Actual word entered by user.
     @FXML
-    private ImageView correct;
+    private ImageView correct; // correct image whose visibility will be set to false in setFirstWord method.
     @FXML
-    private ImageView wrong;
-
+    private ImageView wrong; // wrong image whose visibility will be set to false in setFirstWord method.
     @FXML
-    private Button playAgain;
-
-
+    private Button playAgain; // play again button whose visibility will be set to false in setFirstWord method.
     @FXML
-    private Text greyText;
+    private Text greyText; // setting previous to previous word to gray.
     @FXML
-    private Text blueText;
+    private Text blueText; // setting current word to type to color blue.
     @FXML
-    private Text greenText;
+    private Text greenText; // Setting previous correct typed to green
     @FXML
-    private Text lastText;
-
+    private Text lastText; // This will select last word typed by the user(aage we will set it's color to green if correct. if wrong -> pink)
     @FXML
-    private ImageView imgview;
+    private ImageView imgview; // will set imgview to car image in setFurstWord method.
     private double x1;
     private double y1;
-
     @FXML
     private Label won;
-
     private long pretime = 0;
     Instant start,end;
 
 // Alloting sentence that will be printed in the GUI
     public String givenstring =takeGivenLine();
-
     public String takeGivenLine(){
         int max=50,min=40;
         max=lvl;
-        //System.out.println("level" + lvl);
         min = max - 1;
         max *= 15;
         min *= 15;
@@ -103,9 +92,7 @@ public class Gamecontroller {
         int i = 0;
         int ran = (int) Math.floor(Math.random() * (max - min + 1) + min);
 
-        //System.out.println("random" + ran);
         try {
-//            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/Lines.txt");
             File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\Lines.txt");
             Scanner fileinput = new Scanner(file);
             while (fileinput.hasNext()) {
@@ -122,15 +109,10 @@ public class Gamecontroller {
             System.out.println(e);
         }
         return st;
-        //}
     }
-
-//    public void customtext(String ctext) {
-//        givenstring=ctext;
-//    }
-
     String[] givenwords = givenstring.split(" "); // Creating array which will store all words from the text that will be displayed to type
 
+    // In this function we are setting programWord to given word to type
     public void setfirstword() {
         secpreviousProgramWord.setText("start");
         previousProgramWord.setText("here:- ");
@@ -140,17 +122,15 @@ public class Gamecontroller {
 
         greyText=new Text("");
         greyText.setFill(Color.GREY);
-        blueText = new Text(givenwords[0]);
+        blueText = new Text(givenwords[0]); // Assigning current word to type to blueText
         blueText.setFill(Color.BLUE);
 
-        String st=" ";
-        for(int ii=1;ii<35;ii++){
-            st+=givenwords[ii] + " ";
+        String st=" "; // This will store all the sentences after the first word.
+        for(int i=1;i<35;i++){
+            st+=givenwords[i] + " ";
         }
-        greenText = new Text(st);
-//        if(clr==0)
-            greenText.setFill(Color.BLACK);
-//        else greenText.setFill(Color.WHITE);
+        greenText = new Text(st); // assigning greenText all the sentences after the first word i.e pogramWord
+        greenText.setFill(Color.BLACK);
 
         textflow.getChildren().addAll(greyText,blueText, greenText);
         textflow.setStyle("-fx-font: 28 arial;");
@@ -163,216 +143,16 @@ public class Gamecontroller {
         playAgain.setVisible(false);
         wrong.setVisible(false);
         correct.setVisible(false);
+//        System.out.println("car "+ car);
+        if(car==1) imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_yellow.png"));
+        else if(car==2) imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_red.png"));
+        else if(car==3)imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_pink.png"));
 
-        System.out.println("car "+ car);
-        if(car==1){
-//            imgview.setImage(new Image("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_yellow.png"));
-            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_yellow.png"));
-        }
-        else if(car==2){
-            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_red.png"));
-//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_red.png"));
-        }
-        else if(car==3){
-//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_pink.png"));
-            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_pink.png"));
-        }
         won.setVisible(false);
-
     }
 
-    public void resultview(MouseEvent e) throws IOException {
-
-        String username="t";
-        try {
-            File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
-//            FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
-            Scanner fileinput = new Scanner(file);
-
-            while (fileinput.hasNext()) {
-                String s = fileinput.nextLine();
-                username=s;
-            }
-            fileinput.close();
-        }
-        catch(Exception fe){
-            System.out.println("");
-            System.out.println(fe);
-        }
-
-        Connection connection = null;
-        PreparedStatement psInsert = null;
-        PreparedStatement psCheckUserExists = null;
-        ResultSet resultSet = null;
-
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?@0");
-
-            psInsert = connection.prepareStatement("INSERT INTO races(username,wpm) VALUES(?,?)");
-            psInsert.setString(1, username);
-            psInsert.setInt(2, counter);
-            psInsert.executeUpdate();
-
-
-        } catch (SQLException se) {
-            System.out.println(se);
-//            se.printStackTrace();
-        } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (psCheckUserExists != null) {
-                try {
-                    psCheckUserExists.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (psInsert != null) {
-                try {
-                    psInsert.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-        }
-
-
-        //extra
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
-
-            psInsert = connection.prepareStatement("INSERT INTO extra(username,wpm,accuracy,totword,totchar,pretime) VALUES(?,?,?,?,?,?)");
-            psInsert.setString(1, username);
-            psInsert.setInt(2, counter);
-            int acc = (int) Math.round((counter * 1.0 / countAll) * 100);
-            psInsert.setInt(3, acc);
-            psInsert.setInt(4, countAll);
-            psInsert.setInt(5, countChar);
-            psInsert.setInt(6, (int)pretime);
-            psInsert.executeUpdate();
-
-
-        } catch (SQLException se) {
-            se.printStackTrace();
-        } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (psCheckUserExists != null) {
-                try {
-                    psCheckUserExists.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (psInsert != null) {
-                try {
-                    psInsert.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-        }
-
-        //System.out.println("ttt");
-//        if(clr==0) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene6.fxml"));
-            root = loader.load();
-            //root = FXMLLoader.load(getClass().getResource("game.fxml"));
-            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            Scene6Controller scene6controller = loader.getController();
-            int acc = (int) Math.round((counter * 1.0 / countAll) * 100);
-            scene6controller.displayResult(counter, acc, countAll, countAll - counter);
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-//        }
-//        else{
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene16.fxml"));
-//            root = loader.load();
-//            //root = FXMLLoader.load(getClass().getResource("game.fxml"));
-//            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-//            Scene6Controller scene6controller = loader.getController();
-//            int acc = (int) Math.round((counter * 1.0 / countAll) * 100);
-//            scene6controller.displayResult(counter, acc, countAll, countAll - counter);
-//            scene = new Scene(root);
-//            stage.setScene(scene);
-//            stage.show();
-//        }
-
-    }
-
-
-    private int countAll = 0;
-    private int counter = 0;
-    private int timer = 60;
-    private int speed = 0;
-    private int countChar=0;
-
-    // Car movement logic here
-    Runnable r = new Runnable() {
-        @Override
-        public void run() {
-            if (timer > -1) {
-                seconds.setText(String.valueOf(timer));
-                timer -= 1;
-                wrong.setVisible(false);
-                correct.setVisible(false);
-                imgview.setY(y1-=speed);
-                //speed=0;
-                if(y1<=-480)won.setVisible(true);
-
-
-                double tm=60;
-                double wpm= Math.ceil((counter/(tm-timer))*tm);
-                wordsPerMin.setText(String.valueOf((int)wpm));
-            }
-
-            else {
-                if (timer == -1) {
-                    userWord.setDisable(true);
-                    userWord.setText("Game over");
-                    playAgain.setVisible(true);
-
-                }
-
-                if (timer == -4) {
-                    playAgain.setVisible(true);
-                    playAgain.setDisable(false);
-                    executor.shutdown();
-                }
-
-                timer -= 1;
-            }
-        }
-    };
-
-
+    // on key pressed (interface where user types the word) startGame method executes. Note: fx id is set to userWord
     public void startGame(KeyEvent ke) throws IOException{
-
         if(first==0){
             first = 1;
             executor.scheduleAtFixedRate(r, 0, 1, TimeUnit.SECONDS);
@@ -380,7 +160,6 @@ public class Gamecontroller {
             end = Instant.now();
             Duration timeElapsed = Duration.between(start, end);
             pretime=timeElapsed.toMillis();
-
         }
 
         if (ke.getCode().equals(KeyCode.SPACE)) {
@@ -407,10 +186,7 @@ public class Gamecontroller {
                 else if(lvl==2)speed=(int)wpm/5 +3;
                 else if(lvl==3)speed=(int)wpm/5 +6;
                 else if(lvl==4)speed=(int)wpm/5 +9;
-                /*if(lvl==1)speed=10;
-                else if(lvl==2)speed=12;
-                else if(lvl==3)speed=14;
-                else if(lvl==4)speed=16;*/
+
                 colf=1;
             }
             else{
@@ -421,12 +197,9 @@ public class Gamecontroller {
                 wrong.setVisible(true);
                 correct.setVisible(false);
 
-                //speed=(int)wpm/5;
                 speed=0;
                 colf=0;
-
             }
-
 
             userWord.setText("");
             accuracy.setText(String.valueOf(Math.round((counter*1.0/countAll)*100)) +"%");
@@ -438,7 +211,6 @@ public class Gamecontroller {
             if(fir>=3)secpreviousProgramWord.setText(givenwords[fir-2]);
             else secpreviousProgramWord.setText("here:- ");
 
-
             int lim=0;
             if(fir<35)lim=35;
             else if(fir<35)lim=35;
@@ -449,8 +221,8 @@ public class Gamecontroller {
 
             textflow.getChildren().clear();
             String st="";
-            for(int ii=lim-35;ii<fir-1;ii++){
-                st+=givenwords[ii] + " ";
+            for(int i=lim-35;i<fir-1;i++){
+                st+=givenwords[i] + " ";
             }
             greyText = new Text(st);
             greyText.setFill(Color.GREY);
@@ -464,19 +236,132 @@ public class Gamecontroller {
             blueText.setUnderline(true);
 
             st=" ";
-            for(int ii=fir+1;ii<lim;ii++){
-                st+=givenwords[ii] + " ";
+            for(int i=fir+1;i<lim;i++){
+                st+=givenwords[i] + " ";
             }
             greenText = new Text(st);
-            if(clr==0)greenText.setFill(Color.BLACK);
-            else greenText.setFill(Color.WHITE);
+            greenText.setFill(Color.BLACK);
 
             textflow.getChildren().addAll(greyText,lastText,blueText,greenText);
             textflow.setStyle("-fx-font: 28 arial;");
             textflow.setPrefWidth(700);
         }
+    }
+    public void resultview(MouseEvent e) throws IOException {
+        String username = "";
+        try {
+            File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
+            Scanner fileinput = new Scanner(file);
 
+            while (fileinput.hasNext()) {
+                String s = fileinput.nextLine();
+                username=s;
+            }
+            fileinput.close();
+        }
+        catch(Exception fe){
+            System.out.println("Error in game controller line 199");
+            System.out.println(fe);
+        }
+
+        Connection connection = null;
+        PreparedStatement psInsert = null;
+        PreparedStatement psCheckUserExists = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
+
+            psInsert = connection.prepareStatement("INSERT INTO races(username,wpm) VALUES(?,?)");
+            psInsert.setString(1, username);
+            psInsert.setInt(2, counter);
+            psInsert.executeUpdate();
+        } catch (SQLException se) {
+            System.out.println("error in line 314 game controller");
+            System.out.println(se);
+        } finally {
+            try {
+                CloseResources closingResources = new CloseResources();
+                closingResources.closeResources();
+//                System.out.println("All resources closed in game controller.");
+            } catch (Exception se){
+                System.out.println(se);
+                System.out.println("Error while closing resources in game controller.");
+            }
+        }
+        //extra
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
+
+            psInsert = connection.prepareStatement("INSERT INTO extra(username,wpm,accuracy,totword,totchar,pretime) VALUES(?,?,?,?,?,?)");
+            psInsert.setString(1, username);
+            psInsert.setInt(2, counter);
+            int acc = (int) Math.round((counter * 1.0 / countAll) * 100);
+            psInsert.setInt(3, acc);
+            psInsert.setInt(4, countAll);
+            psInsert.setInt(5, countChar);
+            psInsert.setInt(6, (int)pretime);
+            psInsert.executeUpdate();
+
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } finally {
+            try {
+                CloseResources closingResources = new CloseResources();
+                closingResources.closeResources();
+                System.out.println("All resources closed in Game controller 2nd .");
+            } catch (Exception se){
+                System.out.println(se);
+                System.out.println("Error while closing connection in Game controller 2nd.");
+            }
+        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene6.fxml"));
+        root = loader.load();
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        Scene6Controller scene6controller = loader.getController();
+        int acc = (int) Math.round((counter * 1.0 / countAll) * 100);
+        scene6controller.displayResult(counter, acc, countAll, countAll - counter);
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
+    // if time over logic below
+    private int countAll = 0;
+    private int counter = 0;
+    private int timer = 60;
+    private int speed = 0;
+    private int countChar=0;
+    Runnable r = new Runnable() {
+        @Override
+        public void run() {
+            if (timer > -1) {
+                seconds.setText(String.valueOf(timer));
+                timer -= 1;
+                wrong.setVisible(false);
+                correct.setVisible(false);
+                imgview.setY(y1-=speed);
+                if(y1<=-480)won.setVisible(true);
+
+                double tm=60;
+                double wpm= Math.ceil((counter/(tm-timer))*tm);
+                wordsPerMin.setText(String.valueOf((int)wpm));
+            }
+            else {
+                if (timer == -1) {
+                    userWord.setDisable(true);
+                    userWord.setText("Game over");
+                    playAgain.setVisible(true);
+                }
+                if (timer == -4) {
+                    playAgain.setVisible(true);
+                    playAgain.setDisable(false);
+                    executor.shutdown();
+                }
+                timer -= 1;
+            }
+        }
+    };
 }
 

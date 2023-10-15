@@ -4,63 +4,37 @@ package com.tonevellah.demofx1;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
-import java.util.Scanner;
 
-import static com.tonevellah.demofx1.Scene1Controller.clr;
 import static com.tonevellah.demofx1.Scene1Controller.log;
 
 public class Scene2Controller {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    static public int[] wpms= new int[10];
-
     @FXML
     private TextField uname;
     @FXML
     private PasswordField pass;
     @FXML
     private Label warnin;
-
     public String username;
     public String password;
 
     public void menu(ActionEvent event) throws IOException {
-
         username=uname.getText();
         password=pass.getText();
-
-        System.out.println(username +" "+ password);
-
-        try {
-//            FileWriter fileWriter = new FileWriter("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
-            FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
-            fileWriter.write(username);
-            fileWriter.close();
-        }
-        catch(IOException e){
-            System.out.println("Error in Scene2Controller line 60");
-            e.printStackTrace();
-        }
+//        System.out.println(username +" "+ password);
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -81,8 +55,8 @@ public class Scene2Controller {
             } else {
                 while(resultSet.next()){
                     String retrievedPassword = resultSet.getString("password");
-                    if(retrievedPassword.equals(password)){
 
+                    if(retrievedPassword.equals(password)){
                         try {
                             log = 1;
                             root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
@@ -91,7 +65,7 @@ public class Scene2Controller {
                             stage.setScene(scene);
                             stage.show();
                         } catch (Exception e){
-                            System.out.println("Error in Line 97 scene2Controller.");
+//                            System.out.println("Error in Line 97 scene2Controller.");
                             System.out.println(e);
                         }
                     }
@@ -107,26 +81,13 @@ public class Scene2Controller {
             System.out.println("Error while logging in");
             se.printStackTrace();
         } finally { // Closing Connections and all resources
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
+            try {
+                CloseResources closingResources = new CloseResources();
+                closingResources.closeResources();
+                System.out.println("All resources closed.");
+            } catch (Exception e){
+                System.out.println(e);
+                System.out.println("Error while closing connection in Scene 2 controller.");
             }
         }
     }

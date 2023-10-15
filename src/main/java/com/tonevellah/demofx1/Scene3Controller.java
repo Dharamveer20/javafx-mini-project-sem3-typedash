@@ -1,6 +1,5 @@
 //signup GUI controller
 package com.tonevellah.demofx1;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,46 +21,28 @@ import java.io.*;
 
 import static com.tonevellah.demofx1.Scene1Controller.clr;
 import static com.tonevellah.demofx1.Scene1Controller.log;
-
 public class Scene3Controller {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
     @FXML
     private TextField uname;
     @FXML
     private PasswordField pass;
     @FXML
     private Label warnin;
-
     public String username;
     public String password;
 
     public void menu(ActionEvent event) throws IOException {
-
         username=uname.getText();
         password=pass.getText();
-        System.out.println(username +" "+ password);
-
-            try {
-//            FileWriter fileWriter = new FileWriter("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
-                FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
-//                FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\com\\tonevellah\\demofx1\\usname.txt");
-
-                fileWriter.write(username);
-                fileWriter.close();
-            } catch (Exception e){
-                System.out.println("Filewriter not working while Signing up in Scene3Controller line 55");
-                System.out.println(e);
-            }
 
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
         ResultSet resultSet = null;
         try {
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush" , "root", "anappleaday.?20");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root","anappleaday.?20");
             psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
 
@@ -81,8 +62,7 @@ public class Scene3Controller {
                 psInsert.setString(2, password);
                 psInsert.executeUpdate();
 
-                Statement stm = connection.createStatement();
-               // stm.executeUpdate("Create table "+username+);
+//                Statement stm = connection.createStatement();
                 log=1;
                 root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -93,33 +73,13 @@ public class Scene3Controller {
         } catch (SQLException se) {
             se.printStackTrace();
         } finally { // Closing All Resources (Connections and all)
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (psCheckUserExists != null) {
-                try {
-                    psCheckUserExists.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (psInsert != null) {
-                try {
-                    psInsert.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
+            try {
+                CloseResources closingResources = new CloseResources();
+                closingResources.closeResources();
+                System.out.println("All resources closed in Scene3Controller.");
+            } catch (Exception se){
+                System.out.println(se);
+                System.out.println("Error while closing connection in SCene 3 controller.");
             }
         }
     }

@@ -5,7 +5,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,43 +15,34 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tonevellah.demofx1.Scene4Controller">
    <children>
-      <VBox layoutX="-8.0" layoutY="1.0" prefHeight="650.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="-8.0" layoutY="1.0" prefHeight="650.0" prefWidth="350.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="150.0" prefWidth="350.0" />
-            <Button mnemonicParsing="false" onAction="#playGame" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="WPMRush" textAlignment="CENTER" textFill="#ebe6e6">
+            <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="WPMRush" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-               <effect>
-                  <ColorAdjust brightness="0.3" />
-               </effect>
             </Button>
             <Pane prefHeight="4.0" prefWidth="283.0" />
-            <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="Custom Race" textAlignment="CENTER" textFill="#ebe6e6">
+            <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Custom Race" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-               <effect>
-                  <ColorAdjust brightness="0.3" />
-               </effect>
             </Button>
             <Pane prefHeight="4.0" prefWidth="283.0" />
-            <Button mnemonicParsing="false" onAction="#exit" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="Logout" textFill="#ecdbdb">
+            <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Logout">
                <font>
                   <Font size="24.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-               <effect>
-                  <ColorAdjust brightness="0.3" />
-               </effect>
             </Button>
             <Pane prefHeight="4.0" prefWidth="283.0" />
          </children>
@@ -63,12 +53,12 @@
             <Image url="@TypeDash.png" />
          </image>
       </ImageView>
-      <Text fx:id="uname" fill="#0095ff" layoutX="657.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WPM Score" wrappingWidth="214.951904296875">
+      <Text fx:id="uname" layoutX="657.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WPM Score">
          <font>
             <Font size="40.0" />
          </font>
       </Text>
-      <Text fx:id="advc" fill="#0095ff" layoutX="439.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How Fast Is Your Typing Speed?" textAlignment="CENTER" wrappingWidth="616.4625244140625">
+      <Text fx:id="advc" layoutX="439.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How Fast Is Your Typing Speed?" textAlignment="CENTER" wrappingWidth="616.4625244140625">
          <font>
             <Font size="24.0" />
          </font>

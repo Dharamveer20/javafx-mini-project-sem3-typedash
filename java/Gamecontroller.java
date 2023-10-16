@@ -57,7 +57,7 @@ public class Gamecontroller {
     @FXML
     private Text secondProgramWord;
     @FXML
-    private Text thirddProgramWord;
+    private Text thirdProgramWord;
     @FXML
     private Text secpreviousProgramWord;
     @FXML
@@ -112,7 +112,8 @@ public class Gamecontroller {
 
         //System.out.println("random" + ran);
         try {
-            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/Lines.txt");
+//            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/Lines.txt");
+            File file = new File("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\Lines.txt");
             Scanner fileinput = new Scanner(file);
             while (fileinput.hasNext()) {
                 String s = fileinput.nextLine();
@@ -142,7 +143,7 @@ public class Gamecontroller {
         previousProgramWord.setText("here:- ");
         programWord.setText(givenwords[0]);
         secondProgramWord.setText(givenwords[1]);
-        thirddProgramWord.setText(givenwords[2]);
+        thirdProgramWord.setText(givenwords[2]);
 
         greyText=new Text("");
         greyText.setFill(Color.GREY);
@@ -171,13 +172,16 @@ public class Gamecontroller {
 
         System.out.println("car "+ car);
         if(car==1){
-            imgview.setImage(new Image("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_yellow.png"));
+//            imgview.setImage(new Image("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_yellow.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_yellow.png"));
         }
         else if(car==2){
-            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_red.png"));
+//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_red.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_red.png"));
         }
         else if(car==3){
-            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_pink.png"));
+//            imgview.setImage(new Image ("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/car_pink.png"));
+            imgview.setImage(new Image ("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\car_pink.png"));
         }
         won.setVisible(false);
 
@@ -187,7 +191,8 @@ public class Gamecontroller {
 
         String username="t";
         try {
-            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
+//            File file = new File("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
+            FileWriter fileWriter = new FileWriter("C:\\Users\\Ganesh\\OneDrive\\Documents\\Dharam\\miniproject\\resources\\usname.txt");
             Scanner fileinput = new Scanner(file);
 
             while (fileinput.hasNext()) {
@@ -206,7 +211,7 @@ public class Gamecontroller {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "Rubaiyat26");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
 
             psInsert = connection.prepareStatement("INSERT INTO races(username,wpm) VALUES(?,?)");
             psInsert.setString(1, username);
@@ -250,7 +255,7 @@ public class Gamecontroller {
 
         //extra
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "Rubaiyat26");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "anappleaday.?20");
 
             psInsert = connection.prepareStatement("INSERT INTO extra(username,wpm,accuracy,totword,totchar,pretime) VALUES(?,?,?,?,?,?)");
             psInsert.setString(1, username);

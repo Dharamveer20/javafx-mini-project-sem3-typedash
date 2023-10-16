@@ -1,6 +1,5 @@
-//signup
+//signup GUI controller
 package com.tonevellah.demofx1;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,50 +16,34 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.*;
+import java.io.*;
 
 import static com.tonevellah.demofx1.Scene1Controller.clr;
 import static com.tonevellah.demofx1.Scene1Controller.log;
-
 public class Scene3Controller {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
     @FXML
     private TextField uname;
     @FXML
     private PasswordField pass;
     @FXML
     private Label warnin;
-
     public String username;
     public String password;
 
     public void menu(ActionEvent event) throws IOException {
-
         username=uname.getText();
         password=pass.getText();
-        System.out.println(username +" "+ password);
-
-        try {
-            FileWriter fileWriter = new FileWriter("D:/java code/demofx1/src/main/resources/com/tonevellah/demofx1/usname.txt");
-            fileWriter.write(username);
-            fileWriter.close();
-        }
-        catch(IOException exc){
-            exc.printStackTrace();
-        }
 
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExists = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root", "Rubaiyat26");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/typerush", "root","anappleaday.?20");
             psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
 
             psCheckUserExists.setString(1, username);
@@ -70,9 +53,7 @@ public class Scene3Controller {
                 warnin.setText("Name already taken!");
                 warnin.setVisible(true);
                 System.out.println("user exists");
-                /*Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("This name is already taken!");
-                alert.show();*/
+
                 uname.setText("");
                 pass.setText("");
             } else {
@@ -81,61 +62,29 @@ public class Scene3Controller {
                 psInsert.setString(2, password);
                 psInsert.executeUpdate();
 
-                Statement stm = connection.createStatement();
-               // stm.executeUpdate("Create table "+username+);
+//                Statement stm = connection.createStatement();
                 log=1;
-                if (clr == 0) root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
-                else root = FXMLLoader.load(getClass().getResource("Scene14.fxml"));
+                root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-
-
             }
         } catch (SQLException se) {
             se.printStackTrace();
-        } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (psCheckUserExists != null) {
-                try {
-                    psCheckUserExists.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (psInsert != null) {
-                try {
-                    psInsert.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException se) {
-                    se.printStackTrace();
-                }
+        } finally { // Closing All Resources (Connections and all)
+            try {
+                CloseResources closingResources = new CloseResources();
+                closingResources.closeResources();
+                System.out.println("All resources closed in Scene3Controller.");
+            } catch (Exception se){
+                System.out.println(se);
+                System.out.println("Error while closing connection in SCene 3 controller.");
             }
         }
-        /*if (clr == 0) root = FXMLLoader.load(getClass().getResource("Scene4.fxml"));
-        else root = FXMLLoader.load(getClass().getResource("Scene14.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();*/
-
     }
     public void goback(ActionEvent event) throws IOException {
-        if(clr==0)root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        else root = FXMLLoader.load(getClass().getResource("hello-viewb.fxml"));
+        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

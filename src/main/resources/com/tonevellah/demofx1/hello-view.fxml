@@ -12,12 +12,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tonevellah.demofx1.Scene1Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <VBox layoutX="-8.0" layoutY="13.0" prefHeight="650.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" AnchorPane.bottomAnchor="-13.0" AnchorPane.topAnchor="13.0">
+        <VBox layoutX="-8.0" layoutY="13.0" prefHeight="650.0" prefWidth="350.0" AnchorPane.bottomAnchor="-13.0" AnchorPane.topAnchor="13.0">
             <children>
                 <Pane prefHeight="157.0" prefWidth="350.0" />
-                <Button mnemonicParsing="false" onAction="#signuppage" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="Sign Up" textAlignment="CENTER" textFill="#ebe6e6">
+                <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Sign Up" textAlignment="CENTER">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -29,7 +29,7 @@
                     </effect>
                 </Button>
                 <Pane prefHeight="4.0" prefWidth="283.0" />
-                <Button mnemonicParsing="false" onAction="#loginpage" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="Log In" textAlignment="CENTER" textFill="#ebe6e6">
+                <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="350.0" text="Log In" textAlignment="CENTER">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -41,7 +41,7 @@
                     </effect>
                 </Button>
                 <Pane prefHeight="4.0" prefWidth="283.0" />
-                <Button mnemonicParsing="false" onAction="#exit" pickOnBounds="false" prefHeight="75.0" prefWidth="350.0" style="-fx-background-color: #3F2B63;" text="Exit" textAlignment="CENTER" textFill="#ebe6e6">
+                <Button mnemonicParsing="false" pickOnBounds="false" prefHeight="75.0" prefWidth="350.0" text="Exit" textAlignment="CENTER">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -62,12 +62,12 @@
                 <Image url="@TypeDash.png" />
             </image>
         </ImageView>
-        <Text fill="#0598ff" layoutX="632.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WPM Score" wrappingWidth="210.95196533203125">
+        <Text layoutX="632.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WPM Score">
             <font>
                 <Font size="40.0" />
             </font>
         </Text>
-        <Text fill="#0095ff" layoutX="568.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How Fast Is Your Typing Speed?">
+        <Text layoutX="568.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How Fast Is Your Typing Speed?">
             <font>
                 <Font size="24.0" />
             </font>
